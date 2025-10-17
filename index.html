@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PT Arief Arsitek</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .subsidiaries {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to bottom, #000000, #1a1a1a);
+  color: white;
+  border-top: 4px solid goldenrod;
+  border-bottom: 4px solid goldenrod;
+}
+
+.subsidiaries h2 {
+  color: goldenrod;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.subsidiary-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.subsidiary-boxes .box {
+  background: #111;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 30px;
+  border-radius: 15px;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+.subsidiary-boxes .box:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.subsidiary-boxes .btn {
+  background: goldenrod;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.subsidiary-boxes .btn:hover {
+  background: #b8860b;
+}
+
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+    body { background: #fff; color: #333; }
+
+   .highlight {
+  color: orange;
+  text-shadow:
+    0 0 5px black,
+    0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; left: 0;
+      width: 100%; display: flex;
+      justify-content: space-between; align-items: center;
+      padding: 15px 50px;
+      background: #f9f9f9; z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .logo-container { display: flex; align-items: center; gap: 10px; }
+    header img { width: 50px; }
+    .company-name {
+      font-size: 20px; font-weight: bold;
+      color: #333; letter-spacing: 1px;
+      transition: color 0.3s; cursor: pointer;
+    }
+    .company-name:hover { color: goldenrod; }
+    nav a {
+      margin: 0 15px; text-decoration: none;
+      color: #333333; font-weight: bold; transition: 0.3s;
+    }
+    nav a:hover { color: goldenrod; }
+    
+    /* -------------------------
+   Underline nav (hover-trigger)
+   ------------------------- */
+:root {
+  --nav-underline-color: #d8a928; /* warna oranye logo kamu */
+  --nav-underline-height: 3px;
+  --nav-underline-bottom: -4px;   /* posisi garis di bawah tulisan */
+  --nav-underline-ease: 200ms;
+}
+
+nav {
+  position: relative; /* pastikan posisi relatif untuk underline */
+}
+
+nav a {
+  padding-bottom: 8px;
+}
+
+/* pastikan link punya ruang bawah agar underline tidak menempel ke teks */
+nav a {
+  position: relative;
+  z-index: 3;
+  padding-bottom: 6px; /* beri ruang supaya underline dekat ke teks */
+  transition: color 0.18s ease;
+}
+
+/* elemen garis yang bergerak */
+nav .nav-underline {
+  position: absolute;
+  bottom: var(--nav-underline-bottom);
+  left: 0;
+  height: var(--nav-underline-height);
+  background: var(--nav-underline-color);
+  width: 0;
+  border-radius: 2px;
+  transition:
+    left var(--nav-underline-ease) cubic-bezier(.2,.9,.2,1),
+    width var(--nav-underline-ease) cubic-bezier(.2,.9,.2,1),
+    opacity var(--nav-underline-ease);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 1;
+}
+
+/* opsional: highlight warna teks saat hover */
+nav a:hover { color: var(--nav-underline-color); }
+
+
+    /* HERO SLIDER */
+    .hero { position: relative; height: 100vh; overflow: hidden; }
+    .slide-container { position: relative; width: 100%; height: 100%; }
+    .slide-container img {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; opacity: 0;
+      animation: fadeSlide 18s infinite;
+    }
+    
+    .slide-container img:nth-child(1) { animation-delay: 0s; }
+    .slide-container img:nth-child(2) { animation-delay: 6s; }
+    .slide-container img:nth-child(3) { animation-delay: 12s; }
+    @keyframes fadeSlide {
+      0% { opacity: 0; } 10% { opacity: 1; }
+      30% { opacity: 1; } 40% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 10;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.507);
+    }
+
+    .hero-text h1 { font-size: 50px; font-weight: bold; }
+    .hero-text p { 
+    margin: 20px 0; font-size: 18px;
+    text-shadow: 2px 2px 6px rgb(0, 0, 0);
+    }
+
+    .hero-text .btn {
+      padding: 12px 25px; background: goldenrod; color: white;
+      border: none; font-weight: bold; cursor: pointer;
+      text-decoration: none; border-radius: 5px;
+    }
+
+    /* SECTION */
+    section {
+      padding: 80px 50px;
+      opacity: 0; transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+    section h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+
+    /* ABOUT & SERVICES */
+    .about { background: #fff; max-width: 900px; margin: auto; line-height: 1.8; text-align: center; }
+    .about p { margin-bottom: 20px; font-size: 18px; text-align: justify; }
+
+    .services { background: #f5f5f5; margin-top: 40px; }
+    .service-boxes {
+      display: flex; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .service {
+      background: white; padding: 30px; width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center; transition: transform 0.3s;
+    }
+    .service:hover { transform: translateY(-5px); }
+
+    /* PROJECTS */
+    .projects { background: #fff; }
+    .project-gallery {
+      display: flex; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .project {
+      width: 300px; height: 200px;
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .project img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ==== Our Bussines Group (GRAY–BLACK MODERN STYLE) ==== */
+.subsidiaries {
+  text-align: center;
+  padding: 90px 20px;
+  background: linear-gradient(to bottom, #f5f5f5, #2b2b2b);
+  color: #f8f8f8;
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.subsidiaries.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === JUDUL SECTION === */
+.subsidiaries h2 {
+  color: #ffffff; /* warna tulisan hitam */
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8); /* bayangan putih lembut */
+}
+
+/* === KOTAK BISNIS === */
+.subsidiary-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.subsidiary-boxes .box {
+  background: linear-gradient(145deg, #1a1a1a, #000000);
+  border: 1.5px solid rgba(255, 255, 255, 0.6); /* Garis putih tipis pembatas */
+  padding: 35px 25px;
+  border-radius: 16px;
+  width: 270px;
+  transition: all 0.35s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(40px);
+  cursor: pointer;
+}
+
+.subsidiaries.show .box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover & Klik efek */
+.subsidiary-boxes .box:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+.subsidiary-boxes .box:active {
+  transform: scale(1.08);
+  transition: transform 0.15s ease;
+}
+
+/* === ISI KOTAK === */
+.subsidiary-boxes .box i {
+  font-size: 45px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.subsidiary-boxes .box:hover i {
+  color: #ff7b00; /* warna oranye logo */
+}
+
+.subsidiary-boxes .box h3 {
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.subsidiary-boxes .box p {
+  color: #cccccc;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+/* === TOMBOL VISIT SITE === */
+.subsidiary-boxes .btn {
+  background: #d8a928; /* warna oranye logo */
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.subsidiary-boxes .btn:hover {
+  background: #d8a928;;
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(243, 202, 18, 0.6);
+}
+
+    /* CONTACT */
+    .contact {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px;
+      background: rgba(255, 255, 255, 0.6); /* transparan */
+      backdrop-filter: blur(10px);           /* efek blur di belakang */
+      -webkit-backdrop-filter: blur(10px);   /* untuk Safari */
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('https://plus.unsplash.com/premium_photo-1661376741563-56e907c3ec0c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D') center/cover no-repeat;
+      z-index: -1;
+      opacity: 0.4; /* sesuaikan transparansi background */
+    }
+
+    .contact p { margin: 10px 0; font-size: 18px; }
+    .map { margin-top: 30px; display: flex; justify-content: center; }
+    .map iframe {
+      width: 100%; max-width: 800px;
+      height: 350px; border: none; border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* FORM CONTACT */
+    .contact-form {
+      max-width: 600px;
+      margin: 40px auto;
+      text-align: left;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .contact-form button {
+      background: goldenrod;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover { background: #b8860b; }
+
+    /* SOCIAL ICONS */
+    .social-icons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .social-icons a {
+      font-size: 28px;
+      color: #333;
+      transition: 0.3s;
+    }
+    .social-icons a:hover { color: goldenrod; }
+
+    /* FOOTER */
+    footer { background: #111; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+
+    /* ===================================== */
+    /* RESPONSIVE DESIGN UNTUK MOBILE VIEW  */
+    /* ===================================== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 10px 20px;
+        text-align: center;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      nav a {
+        margin: 5px 10px;
+        font-size: 14px;
+      }
+      .hero {
+        height: 80vh;
+      }
+      .hero-text h1 {
+        font-size: 28px;
+      }
+      .hero-text p {
+        font-size: 14px;
+        padding: 0 20px;
+      }
+      .hero-text .btn {
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+      section {
+        padding: 50px 20px;
+      }
+      .about p {
+        font-size: 16px;
+        text-align: justify;
+      }
+      .service-boxes,
+      .project-gallery,
+      .subsidiary-boxes {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service, .project, .box {
+        width: 90%;
+        margin-bottom: 20px;
+      }
+      .contact-form {
+        width: 90%;
+      }
+      .map iframe {
+        height: 250px;
+      }
+      footer {
+        font-size: 14px;
+        padding: 15px;
+      }
+
+
+    /* === PERBAIKAN TAMPILAN MOBILE UNTUK BAGIAN PROJECTS === */
+@media (max-width: 768px) {
+  /* Jarak antar foto */
+  .project-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 0 10px;
+  }
+
+  /* Setiap foto memenuhi lebar layar dengan rasio bagus */
+  .project {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  /* Ukuran gambar agar tidak gepeng atau kosong */
+  .project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* Sedikit transisi agar tampil smooth saat loading */
+  .project img {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Tambahan: supaya jarak antar section tidak terlalu mepet */
+  .projects {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+}
+  </style>
+
+  <style>
+  .service {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 30px 25px;
+    width: 300px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .service i {
+    font-size: 40px;
+    color: goldenrod;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .service h3 {
+    color: #222;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .service p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* ANIMASI HOVER */
+  .service:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .service:hover i {
+    color: #f4c542;
+    transform: rotate(10deg) scale(1.2);
+  }
+</style>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-container">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.STYLfiIgbSd0y3xIDi1rVwAAAA?pid=Api&P=0&h=180" alt="Logo">
+      <span class="company-name">PT. ARIEF ARSITEK</span>
+    </div>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#services">SERVICES</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero visible" id="home">
+    <div class="slide-container">
+      <img src="img/foto15.jpeg" alt="Gedung 1">
+      <img src="img/foto26.jpg" alt="Gedung 2">
+      <img src="img/foto27.jpg" alt="Gedung 3">
+    </div>
+    <div class="hero-text">
+      <h1>Welcome To <span class="highlight">PT. ARIEF ARSITEK</span></h1>
+      <p>Kami mengedepankan inovasi, profesionalisme, dan keberlanjutan dalam setiap langkah. Dengan tiga unit bisnis — Konsultan Teknik, Konstraktor, dan Properti — kami hadir untuk mewujudkan ide Anda menjadi bangunan nyata yang bermakna.</p>
+      <a href="#our-business-group" class="btn">Our Business Group</a>
+    </div>
+  </section>
+
+  <!-- SUBSIDIARIES -->
+<section class="subsidiaries" id="our-business-group">
+  <h2>Our Business Group</h2>
+  <div class="subsidiary-boxes">
+    <div class="box">
+      <i class="fa-solid fa-building" style="font-size:40px;color:goldenrod;margin-bottom:10px;"></i>
+      <h3>Malang Kontraktor</h3>
+      <a href="https://malangkontraktor.com/" target="_blank" class="btn">VISIT SITE</a>
+    </div>
+
+    <div class="box">
+      <i class="fa-solid fa-drafting-compass" style="font-size:40px;color:goldenrod;margin-bottom:10px;"></i>
+      <h3>Arief Arsitek</h3>
+      <a href="https://arief-arsitek.com/" target="_blank" class="btn">VISIT SITE</a>
+    </div>
+
+    <div class="box">
+      <i class="fa-solid fa-city" style="font-size:40px;color:goldenrod;margin-bottom:10px;"></i>
+      <h3>Companies House</h3>
+      <a href="https://companieshouse.id/indonesia-arief-utama" target="_blank" class="btn">VISIT SITE</a>
+    </div>
+  </div>
+</section>
+
+  <!-- ABOUT -->
+  <section>
+     <div class="about">
+      <h2>PT. ARIEF ARSITEK MALANG</h2>
+      <p>
+        PT ARIEF ARSITEK Malang adalah perusahaan yang bergerak di bidang arsitektur, desain, dan konstruksi 
+        yang berbasis di Kota Malang. Sejak berdiri, perusahaan ini berkomitmen untuk menghadirkan solusi 
+        inovatif dalam perencanaan dan pembangunan berbagai jenis proyek, mulai dari perumahan, gedung 
+        perkantoran, hingga fasilitas komersial. Dengan tenaga profesional yang berpengalaman, PT ARIEF 
+        ARSITEK selalu mengutamakan kualitas, ketepatan waktu, dan kepuasan klien dalam setiap pekerjaan. 
+        Kami percaya bahwa desain yang baik bukan hanya tentang estetika, tetapi juga tentang fungsi, 
+        kenyamanan, serta keberlanjutan lingkungan. Dengan pengalaman yang luas, tim profesional kami 
+        terdiri dari arsitek, insinyur, dan tenaga ahli di bidang konstruksi yang selalu mengedepankan 
+        inovasi dan keberlanjutan. PT ARIEF ARSITEK Malang telah dipercaya menangani berbagai proyek 
+        mulai dari hunian pribadi, gedung komersial, perkantoran, hingga proyek skala besar.
+      </p>
+      <p>
+        Kami percaya bahwa setiap proyek adalah karya seni sekaligus tanggung jawab moral. Karena itu, kami berusaha menciptakan bangunan 
+        yang tidak hanya kokoh dan fungsional, tetapi juga memiliki nilai estetika tinggi dan ramah lingkungan. 
+        Dedikasi kami tercermin dalam kepuasan klien yang selalu menjadi prioritas utama.
+      </p>
+      <p>
+        Visi kami adalah menjadi perusahaan arsitektur dan konstruksi terdepan di Indonesia, yang dikenal karena kualitas, 
+        profesionalisme, dan komitmen terhadap keberlanjutan. Dengan dukungan teknologi modern serta pendekatan kreatif, 
+        PT ARIEF ARSITEK Malang siap menjadi mitra terpercaya Anda dalam mewujudkan setiap ide dan impian.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+<section id="services" style="padding:80px 0; text-align:center; background:#fff;">
+  <h2 style="font-size:2rem; margin-bottom:50px; color:#333;">Services</h2>
+  <div class="service-boxes" style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px;">
+
+    <!-- 1 -->
+    <div class="service">
+      <i class="fa-solid fa-pencil-ruler"></i>
+      <h3>Design & Architecture</h3>
+      <p>Perencanaan dan desain arsitektur yang inovatif, fungsional, dan estetis. Kami merancang bangunan yang merefleksikan karakter unik setiap klien.</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="service">
+      <i class="fa-solid fa-building"></i>
+      <h3>Construction</h3>
+      <p>Pembangunan profesional dari awal hingga akhir dengan kualitas tinggi, tepat waktu, dan menjamin keamanan struktur bangunan.</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="service">
+      <i class="fa-solid fa-comments-dollar"></i>
+      <h3>Consulting</h3>
+      <p>Konsultasi profesional dari perencanaan hingga eksekusi proyek, membantu memilih solusi desain dan biaya paling efisien.</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="service">
+      <i class="fa-solid fa-couch"></i>
+      <h3>Interior Design</h3>
+      <p>Desain interior elegan dan fungsional yang menciptakan kenyamanan dan keindahan dalam setiap ruang.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="service">
+      <i class="fa-solid fa-tree-city"></i>
+      <h3>Landscape Design</h3>
+      <p>Menata ruang luar yang harmonis dengan bangunan utama untuk menciptakan suasana alami dan menenangkan.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="service">
+      <i class="fa-solid fa-hammer"></i>
+      <h3>Renovation & Remodeling</h3>
+      <p>Transformasi bangunan lama menjadi tampilan baru yang modern tanpa kehilangan karakter aslinya.</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="service">
+      <i class="fa-solid fa-helmet-safety"></i>
+      <h3>Project Management</h3>
+      <p>Manajemen proyek yang profesional dan efisien memastikan semua pekerjaan selesai sesuai jadwal dan anggaran.</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="service">
+      <i class="fa-solid fa-drafting-compass"></i>
+      <h3>Structural Design</h3>
+      <p>Perencanaan struktur bangunan yang kuat, aman, dan sesuai dengan standar teknik modern.</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="project-gallery">
+      <div class="project"><img src="img/foto1.jpeg" alt="Project 1"></div>
+      <div class="project"><img src="img/foto2.JPG" alt="Project 2"></div>
+      <div class="project"><img src="img/foto5.jpg" alt="Project 5"></div>
+      <div class="project"><img src="img/foto6.jpeg" alt="Project 6"></div>
+      <div class="project"><img src="img/foto9.jpeg" alt="Project 9"></div>
+      <div class="project"><img src="img/foto10.jpeg" alt="Project 10"></div>
+      <div class="project"><img src="img/foto12.jpeg" alt="Project 12"></div>
+      <div class="project"><img src="img/foto13.jpeg" alt="Project 13"></div>
+      <div class="project"><img src="img/foto15.jpeg" alt="Project 15"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p><i class="fa-solid fa-location-dot"></i> Jl. Monginsidi No.6, Rampal Celaket, Kec. Klojen, Kota Malang, Jawa Timur 65111</p>
+    <p><i class="fa-solid fa-phone"></i> +628999600111</p>
+    <p><i class="fa-solid fa-phone"></i> +622337781234</p>
+    <p><i class="fa-solid fa-envelope"></i> pt.arief.arsitek@gmail.com</p>
+
+    <!-- FORM CONTACT -->
+    <div class="contact-form">
+      <form>
+        <label for="name">Nama</label>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+        <label for="subject">Subjek</label>
+        <input type="text" id="subject" name="subject" placeholder="Judul pesan" required>
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tulis pesan atau tanggapan Anda di sini..." required></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+    </div>
+
+    <!-- GOOGLE MAPS -->
+    <div class="map" style="max-width: 600px; margin: 20px auto;">
+      <iframe
+        src="https://www.google.com/maps?q=-7.964746,112.633676&hl=id&z=18&output=embed"
+        width="100%"
+        height="300"
+        style="border:0; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.2);"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- SOCIAL ICONS -->
+    <div class="social-icons">
+      <a href="https://wa.me/6282337781234" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://youtube.com/@ariefarsitek?si=HdWDpIA93sRJkGrI" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com/share/1BG9rqZD43/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/pt.arief.arsitek?igsh=dGhsaXNtYmJjNjk3" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@pt.arief.arsitek?_t=ZS-90S4jRglsLU&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>© 2025 PT. Arief Utama. All Rights Reserved</footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+<script>
+  // Efek muncul saat discroll
+  window.addEventListener('scroll', function() {
+    const section = document.querySelector('.subsidiaries');
+    const position = section.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.2;
+
+    if (position < screenPosition) {
+      section.classList.add('show');
+    }
+  });
+</script>
+
+<script>
+(function(){
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+
+      // ambil semua link internal (anchor)
+      const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+      if (links.length === 0) return;
+
+      // buat elemen underline kalau belum ada
+      let underline = nav.querySelector('.nav-underline');
+      if (!underline) {
+        underline = document.createElement('span');
+        underline.className = 'nav-underline';
+        nav.appendChild(underline);
+      }
+
+      // pastikan nav position relative jika belum di-set
+      const navStyle = getComputedStyle(nav).position;
+      if (navStyle === 'static' && !nav.style.position) nav.style.position = 'relative';
+
+      // helper untuk memindahkan underline
+      function moveUnderlineTo(el, instant) {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+        const left = Math.round(rect.left - navRect.left);
+        const width = Math.round(rect.width);
+
+        if (instant) {
+          // no transition for setup
+          underline.style.transition = 'none';
+          underline.style.width = width + 'px';
+          underline.style.left = left + 'px';
+          requestAnimationFrame(() => { underline.style.transition = ''; });
+        } else {
+          underline.style.width = width + 'px';
+          underline.style.left = left + 'px';
+        }
+      }
+
+      // cari link "aktif" awal (class active) atau null
+      function getActiveLink() {
+        return links.find(l => l.classList.contains('active')) || null;
+      }
+
+      // inisialisasi: posisi underline pada active (instant)
+      const initial = getActiveLink() || links[0];
+      if (initial) moveUnderlineTo(initial, true);
+
+      // pointerenter => pindahkan underline ke link yang dihover
+      links.forEach(link => {
+        link.addEventListener('pointerenter', function() {
+          moveUnderlineTo(this, false);
+        });
+
+        // pointerleave pada masing-masing link: kembalikan ke active (setTimeout kecil untuk smoothing)
+        link.addEventListener('pointerleave', function() {
+          const active = getActiveLink() || null;
+          setTimeout(() => {
+            if (active) moveUnderlineTo(active, false);
+            else underline.style.width = '0';
+          }, 80);
+        });
+
+        // klik: update class 'active' agar underline kembali ke link itu saat pointer keluar / saat scroll
+        link.addEventListener('click', function() {
+          links.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+
+        // keyboard accessibility: fokus juga memicu underline
+        link.addEventListener('focus', function() { moveUnderlineTo(this, false); });
+        link.addEventListener('blur', function() {
+          const active = getActiveLink() || null;
+          if (active) moveUnderlineTo(active, false);
+          else underline.style.width = '0';
+        });
+      });
+
+      // saat scroll -> cari section aktif dan set active class (opsional jika kamu ingin underline berpindah saat scroll)
+      const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+      function updateOnScroll() {
+        const offset = window.innerHeight * 0.28;
+        let current = null;
+        for (let sec of sections) {
+          if ((window.scrollY + offset) >= sec.offsetTop) current = sec;
+        }
+        if (current) {
+          const id = current.getAttribute('id');
+          const target = links.find(l => l.getAttribute('href') === ('#' + id));
+          if (target && !target.classList.contains('active')) {
+            links.forEach(l => l.classList.remove('active'));
+            target.classList.add('active');
+            moveUnderlineTo(target, false);
+          }
+        }
+      }
+
+      // throttle scroll via rAF
+      let rAF = null;
+      window.addEventListener('scroll', function() {
+        if (rAF) cancelAnimationFrame(rAF);
+        rAF = requestAnimationFrame(updateOnScroll);
+      });
+
+      // resize -> sesuaikan lebar/posisi
+      window.addEventListener('resize', function() {
+        const active = getActiveLink() || links[0];
+        if (active) moveUnderlineTo(active, true);
+      });
+
+    } catch (err) {
+      console.warn('Nav underline safe script error:', err);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
